@@ -56,3 +56,18 @@ header {
   object-fit: cover;
   object-position: center;
 }
+
+.introduction {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sell-card {
+  width: 160px;
+  height: 330px;
+}
+
+.sell-card img {
+  display: flex;
+  width: 40%;
+}

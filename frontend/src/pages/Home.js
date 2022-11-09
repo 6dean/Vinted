@@ -29,10 +29,18 @@ const Home = () => {
         />
       </div>
       <div>
-        {console.log(data.offers[0].product_name)}
-        <Link to="/offer"> OFFER </Link>
+        <Link to="/offer"> VOIR LES OFFRES </Link>
       </div>
-      <p>{data.offers[0].product_name}</p>
+      <div className="introduction">
+        {data.offers.map((elem) => {
+          return (
+            <div className="sell-card">
+              <div className="product-name">{elem.product_name}</div>
+              <>{console.log(elem.owner)}</>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };
