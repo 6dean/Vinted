@@ -28,9 +28,7 @@ const Home = () => {
           alt=""
         />
       </div>
-      <div>
-        <Link to="/offer"> VOIR LES OFFRES </Link>
-      </div>
+
       <div className="introduction">
         {data.offers.map((elem) => {
           return (
