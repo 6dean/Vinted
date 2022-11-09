@@ -33,8 +33,6 @@ const Home = () => {
       </div>
       <div className="introduction">
         {data.offers.map((elem) => {
-          console.log(elem.owner && elem.owner.account);
-
           return (
             <div className="sell-card">
               <div className="user-id">
@@ -42,8 +40,9 @@ const Home = () => {
                   ? "Team Reacteur"
                   : elem.owner.account.username}
               </div>
-              <div className="image-container">
-                <Link to="/offer">
+
+              <Link to={`/offer/${elem._id}`}>
+                <div className="image-container">
                   <img
                     src={
                       elem.product_image.secure_url
@@ -52,8 +51,8 @@ const Home = () => {
                     }
                     alt=""
                   />
-                </Link>
-              </div>
+                </div>
+              </Link>
 
               <div className="product-price">{elem.product_price} €</div>
               <div className="product-info">
