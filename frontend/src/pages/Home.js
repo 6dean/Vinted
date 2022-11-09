@@ -33,11 +33,11 @@ const Home = () => {
       </div>
       <div className="introduction">
         {data.offers.map((elem) => {
-          console.log(elem.product_details.sort());
+          console.log(elem.owner && elem.owner.account);
 
           return (
             <div className="sell-card">
-              <div className="product-name">
+              <div className="user-id">
                 {elem.owner === undefined
                   ? "Team Reacteur"
                   : elem.owner.account.username}
