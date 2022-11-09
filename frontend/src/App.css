@@ -9,7 +9,8 @@ header {
 
 .header-style {
   display: flex;
-  gap: 40px;
+  gap: 20px;
+  height: 30px;
 }
 
 .search-bar {
@@ -23,6 +24,9 @@ header {
   border: solid 1px rgb(86, 163, 137);
   padding: 10px;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-sell {
@@ -31,6 +35,9 @@ header {
   border: solid 1px rgb(86, 163, 137);
   padding: 10px;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button:hover,
