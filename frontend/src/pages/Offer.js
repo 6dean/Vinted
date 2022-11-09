@@ -1,14 +1,31 @@
-import { Link } from "react-router-dom";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Offer = () => {
-  return (
-    <div>
-      <p>JE SUIS PAGE OFFER</p>
-      <div>
-        <Link to="/"> HOME </Link>
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchData = async () => {
+    const response = await axios.get(
+      "https://lereacteur-vinted-api.herokuapp.com/offers"
+    );
+    setData(response.data);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return isLoading ? (
+    <span>En cours de chargement... </span>
+  ) : (
+    <>
+      <div className="offer-presentation">
+        <div className="img-element">HELLO</div>
+        <div className="details-element">JE SUIS PAGE OFFER</div>
       </div>
-    </div>
+    </>
   );
 };
 

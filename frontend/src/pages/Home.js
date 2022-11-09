@@ -43,15 +43,18 @@ const Home = () => {
                   : elem.owner.account.username}
               </div>
               <div className="image-container">
-                <img
-                  src={
-                    elem.product_image.secure_url
-                      ? elem.product_image.secure_url
-                      : null
-                  }
-                  alt=""
-                />
+                <Link to="/offer">
+                  <img
+                    src={
+                      elem.product_image.secure_url
+                        ? elem.product_image.secure_url
+                        : null
+                    }
+                    alt=""
+                  />
+                </Link>
               </div>
+
               <div className="product-price">{elem.product_price} €</div>
               <div className="product-info">
                 {elem.product_details[1]["TAILLE"]}
