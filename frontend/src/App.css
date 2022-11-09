@@ -1,0 +1,51 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-style {
+  display: flex;
+  gap: 40px;
+}
+
+.search-bar {
+  height: 35px;
+  width: 500px;
+}
+
+.button {
+  color: rgb(86, 163, 137);
+  background-color: white;
+  border: solid 1px rgb(86, 163, 137);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.button-sell {
+  color: rgb(255, 255, 255);
+  background-color: rgb(86, 163, 137);
+  border: solid 1px rgb(86, 163, 137);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.button:hover,
+.button-sell:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 10px gray;
+}
+
+.img-advertise {
+  height: 600px;
+}
+
+.img-advertise img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
