@@ -33,10 +33,32 @@ const Home = () => {
       </div>
       <div className="introduction">
         {data.offers.map((elem) => {
+          console.log(elem.product_details.sort());
+
           return (
             <div className="sell-card">
-              <div className="product-name">{elem.product_name}</div>
-              <>{console.log(elem.owner)}</>
+              <div className="product-name">
+                {elem.owner === undefined
+                  ? "Team Reacteur"
+                  : elem.owner.account.username}
+              </div>
+              <div className="image-container">
+                <img
+                  src={
+                    elem.product_image.secure_url
+                      ? elem.product_image.secure_url
+                      : null
+                  }
+                  alt=""
+                />
+              </div>
+              <div className="product-price">{elem.product_price} €</div>
+              <div className="product-info">
+                {elem.product_details[1]["TAILLE"]}
+              </div>
+              <div className="product-info">
+                {elem.product_details[0]["MARQUE"]}
+              </div>
             </div>
           );
         })}
