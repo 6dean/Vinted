@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const Signup = () => {
   // MES USESTATE
@@ -66,7 +67,8 @@ const Signup = () => {
                             newsletter: true,
                           }
                         );
-                        console.log(response.data.token);
+                        const token = response.data.token;
+                        Cookies.set("token", token, { expires: 1 });
                       } catch (error) {
                         console.log(error);
                       }
