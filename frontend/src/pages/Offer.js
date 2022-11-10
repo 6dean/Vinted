@@ -63,9 +63,16 @@ const Offer = () => {
           <div className="product-name">{data.product_name} </div>
           <div className="product-description">{data.product_description} </div>
           <div className="user-id">
-            {data.owner === undefined
-              ? "Team Reacteur"
-              : data.owner.account.username}
+            {data.owner !== undefined &&
+            data.owner.account !== undefined &&
+            data.owner.account.avatar !== undefined ? (
+              <img
+                className="avatar"
+                src={data.owner.account.avatar.secure_url}
+                alt=""
+              />
+            ) : null}
+            {data.owner === undefined ? null : data.owner.account.username}
           </div>
           <div className="buy-button">
             <button>ACHETER</button>

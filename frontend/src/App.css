@@ -47,7 +47,7 @@ header {
 }
 
 .img-advertise {
-  height: 600px;
+  height: 500px;
 }
 
 .img-advertise img {
@@ -78,7 +78,17 @@ header {
   cursor: pointer;
 }
 
+.avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 20px;
+  margin-right: 10px;
+  object-fit: cover;
+  object-position: center;
+}
+
 .image-container {
+  margin-top: 10px;
   height: 320px;
   width: 210px;
   object-fit: cover;

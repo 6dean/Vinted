@@ -32,34 +32,47 @@ const Home = () => {
       <div className="introduction">
         {data.offers.map((elem) => {
           return (
-            <div className="sell-card">
-              <div className="user-id">
-                {elem.owner === undefined
-                  ? "Team Reacteur"
-                  : elem.owner.account.username}
-              </div>
+            <>
+              {elem.owner !== undefined ? (
+                <div className="sell-card">
+                  <div className="user-id">
+                    {elem.owner !== undefined &&
+                    elem.owner.account !== undefined &&
+                    elem.owner.account.avatar !== undefined ? (
+                      <img
+                        className="avatar"
+                        src={elem.owner.account.avatar.secure_url}
+                        alt=""
+                      />
+                    ) : null}
+                    {elem.owner === undefined
+                      ? "Team Reacteur"
+                      : elem.owner.account.username}
+                  </div>
 
-              <Link to={`/offer/${elem._id}`}>
-                <div className="image-container">
-                  <img
-                    src={
-                      elem.product_image.secure_url
-                        ? elem.product_image.secure_url
-                        : null
-                    }
-                    alt=""
-                  />
+                  <Link to={`/offer/${elem._id}`}>
+                    <div className="image-container">
+                      <img
+                        src={
+                          elem.product_image.secure_url
+                            ? elem.product_image.secure_url
+                            : null
+                        }
+                        alt=""
+                      />
+                    </div>
+                  </Link>
+
+                  <div className="product-price">{elem.product_price} €</div>
+                  <div className="product-info">
+                    {elem.product_details[1]["TAILLE"]}
+                  </div>
+                  <div className="product-info">
+                    {elem.product_details[0]["MARQUE"]}
+                  </div>
                 </div>
-              </Link>
-
-              <div className="product-price">{elem.product_price} €</div>
-              <div className="product-info">
-                {elem.product_details[1]["TAILLE"]}
-              </div>
-              <div className="product-info">
-                {elem.product_details[0]["MARQUE"]}
-              </div>
-            </div>
+              ) : null}
+            </>
           );
         })}
       </div>
