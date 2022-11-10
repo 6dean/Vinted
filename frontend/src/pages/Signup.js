@@ -1,26 +1,31 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
-  const [name, setName] = useState("");
+  // MES USESTATE
+  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPass, setConfirmPass] = useState("");
   const [infos, setInfos] = useState(false);
 
+  // MES VARIABLES
+  const navigate = useNavigate();
+
   return (
-    <div className="formulaire">
+    <form className="formulaire">
       <div className="App">
         <h1>Vos informations </h1>
         {infos === false ? (
           <div className="input-block">
             <div>
-              <p>Name</p>
+              <p>Nom d'Utilisateur</p>
               <input
-                onChange={(name) => setName(name.target.value)}
+                onChange={(username) => setName(username.target.value)}
                 type="text"
                 placeholder="Utilisateur"
                 name="name"
-                value={name}
+                value={username}
               />
             </div>
             <div>
@@ -43,26 +48,31 @@ const Signup = () => {
               />
             </div>
             <div>
-              <p>Confirm Password</p>
-              <input
-                className={password !== confirmPass && "pass-border"}
-                onChange={(elem) => setConfirmPass(elem.target.value)}
-                type="password"
-                name="confirm password"
-                value={confirmPass}
-              />
-            </div>
-            <div>
               <button
                 onClick={() => {
-                  if (password !== confirmPass) {
-                    alert(`Passwords are not identical ! Please retry`);
-                  }
-                  if (password !== confirmPass) {
-                  } else if (name === "" || email === "") {
+                  if (username === "" || email === "") {
                     alert(`Your informations are not complete`);
                   } else {
                     setInfos(true);
+
+                    const data = async () => {
+                      try {
+                        const response = await axios.post(
+                          "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+                          {
+                            email: email,
+                            username: username,
+                            password: password,
+                            newsletter: true,
+                          }
+                        );
+                        console.log(response.data.token);
+                      } catch (error) {
+                        console.log(error);
+                      }
+                    };
+                    data();
+                    navigate("/");
                   }
                 }}
               >
@@ -72,7 +82,7 @@ const Signup = () => {
           </div>
         ) : null}
       </div>
-    </div>
+    </form>
   );
 };
 

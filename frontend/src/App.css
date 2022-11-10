@@ -336,12 +336,9 @@ h1 {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.pass-border {
-  outline-color: red;
-}
-
 .input-block p {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
 }
 
 input {
