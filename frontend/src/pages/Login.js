@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Cookies from "js-cookie";
 
-const Signup = () => {
+const Login = ({ transferToken }) => {
   // MES USESTATE
-  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [infos, setInfos] = useState(false);
@@ -18,20 +14,9 @@ const Signup = () => {
   return (
     <div className="formulaire">
       <div className="App">
-        <h1>Inscription</h1>
+        <h1>LOGIN</h1>
         {infos === false ? (
           <div className="input-block">
-            <div>
-              <p>Nom d'Utilisateur</p>
-              <input
-                className="input"
-                onChange={(username) => setName(username.target.value)}
-                type="text"
-                placeholder="Utilisateur"
-                name="name"
-                value={username}
-              />
-            </div>
             <div>
               <p>Email</p>
               <input
@@ -56,7 +41,7 @@ const Signup = () => {
             <div>
               <button
                 onClick={() => {
-                  if (username === "" || email === "") {
+                  if (email === "") {
                     alert(`Your informations are not complete`);
                   } else {
                     setInfos(true);
@@ -64,16 +49,14 @@ const Signup = () => {
                     const data = async () => {
                       try {
                         const response = await axios.post(
-                          "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+                          "https://lereacteur-vinted-api.herokuapp.com/user/login",
                           {
                             email: email,
-                            username: username,
                             password: password,
-                            newsletter: true,
                           }
                         );
                         const token = response.data.token;
-                        Cookies.set("token", token, { expires: 1 });
+                        transferToken(token);
                         navigate("/");
                       } catch (error) {
                         console.log(error);
@@ -83,14 +66,8 @@ const Signup = () => {
                   }
                 }}
               >
-                Créer un compte
+                Se connecter
               </button>
-              <div className="already-member">
-                Vous avez déjà un compte ?{" "}
-                <Link to="/Login">
-                  <span>Se connecter</span>
-                </Link>
-              </div>
             </div>
           </div>
         ) : null}
@@ -99,4 +76,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

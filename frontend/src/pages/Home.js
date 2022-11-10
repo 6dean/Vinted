@@ -38,7 +38,7 @@ const Home = () => {
       <div className="introduction">
         {data.offers.map((elem) => {
           return (
-            <>
+            <div>
               {elem.owner !== undefined ? (
                 <div className="sell-card">
                   <div className="user-id">
@@ -78,7 +78,7 @@ const Home = () => {
                   </div>
                 </div>
               ) : null}
-            </>
+            </div>
           );
         })}
       </div>

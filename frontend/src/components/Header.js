@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ token, transferToken }) => {
   return (
     <header>
       <div>
@@ -18,10 +18,25 @@ const Header = () => {
         name="Vinted"
       />
       <div className="header-style">
-        <Link to="/Signup">
-          <div className="button">S'inscrire | Se connecter</div>
+        {token === null ? (
+          <Link to="/Signup">
+            <div className="button">S'inscrire | Se connecter</div>
+          </Link>
+        ) : (
+          <div
+            className="button"
+            onClick={() => {
+              transferToken(null);
+              console.log("hello");
+            }}
+          >
+            deconnecter
+          </div>
+        )}
+
+        <Link to="/Login">
+          <div className="button-sell">Vendre tes articles</div>
         </Link>
-        <div className="button-sell">Vendre tes articles</div>
       </div>
     </header>
   );
