@@ -26,7 +26,7 @@ const Home = () => {
         <div className="style-advertise">
           Prêts à faire du tri dans vos placards ?
         </div>
-        <button className="advertise-button">ACHETER</button>
+        <button className="advertise-button">Vends maintenant</button>
       </div>
       <div className="img-advertise">
         <img

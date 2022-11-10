@@ -22,7 +22,7 @@ const Signup = () => {
         {infos === false ? (
           <div className="input-block">
             <div>
-              <p>Nom d'Utilisateur</p>
+              <p className="input-text">Nom d'Utilisateur</p>
               <input
                 className="input"
                 onChange={(username) => setName(username.target.value)}
@@ -33,7 +33,7 @@ const Signup = () => {
               />
             </div>
             <div>
-              <p>Email</p>
+              <p className="input-text">Email</p>
               <input
                 className="input"
                 onChange={(elem) => setEmail(elem.target.value)}
@@ -44,7 +44,7 @@ const Signup = () => {
               />
             </div>
             <div>
-              <p>Password</p>
+              <p className="input-text">Password</p>
               <input
                 className="input"
                 onChange={(elem) => setPassword(elem.target.value)}
@@ -55,6 +55,7 @@ const Signup = () => {
             </div>
             <div>
               <button
+                className="button-join"
                 onClick={() => {
                   if (username === "" || email === "") {
                     alert(`Your informations are not complete`);

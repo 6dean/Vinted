@@ -14,11 +14,11 @@ const Login = ({ transferToken }) => {
   return (
     <div className="formulaire">
       <div className="App">
-        <h1>LOGIN</h1>
+        <h1>Se connecter</h1>
         {infos === false ? (
           <div className="input-block">
             <div>
-              <p>Email</p>
+              <p className="input-text">Email</p>
               <input
                 className="input"
                 onChange={(elem) => setEmail(elem.target.value)}
@@ -29,7 +29,7 @@ const Login = ({ transferToken }) => {
               />
             </div>
             <div>
-              <p>Password</p>
+              <p className="input-text">Mot de passe</p>
               <input
                 className="input"
                 onChange={(elem) => setPassword(elem.target.value)}
