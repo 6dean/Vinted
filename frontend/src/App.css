@@ -276,8 +276,9 @@ header {
 }
 
 .product-description {
-  font-family: Verdana, sans-serif;
-  font-size: 15px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 13px;
   margin-bottom: 20px;
 }
 
@@ -357,6 +358,11 @@ h1 {
   margin: 0;
   padding: 10px;
   display: flex;
+}
+
+.input::placeholder {
+  color: rgb(220, 220, 220);
+  opacity: 1;
 }
 
 .input {

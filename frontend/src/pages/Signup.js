@@ -22,7 +22,7 @@ const Signup = () => {
         {infos === false ? (
           <div className="input-block">
             <div>
-              <p className="input-text">Nom d'Utilisateur</p>
+              <p className="input-text">Pseudo</p>
               <input
                 className="input"
                 onChange={(username) => setName(username.target.value)}
@@ -44,7 +44,7 @@ const Signup = () => {
               />
             </div>
             <div>
-              <p className="input-text">Password</p>
+              <p className="input-text">Mot de passe</p>
               <input
                 className="input"
                 onChange={(elem) => setPassword(elem.target.value)}
