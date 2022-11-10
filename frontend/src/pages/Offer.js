@@ -40,23 +40,24 @@ const Offer = () => {
           <div className="detail-price">{data.product_price} €</div>
           <div className="listing-props">
             <div className="detail-elem">
-              <span>MARQUE</span>{" "}
-              <span>{data.product_details[0]["MARQUE"]}</span>
+              <div className="elem-id">MARQUE</div>{" "}
+              <div>{data.product_details[0]["MARQUE"]}</div>
             </div>
             <div className="detail-elem">
-              <span>TAILLE</span>{" "}
-              <span>{data.product_details[1]["TAILLE"]}</span>
+              <div className="elem-id">TAILLE</div>{" "}
+              <div>{data.product_details[1]["TAILLE"]}</div>
             </div>
             <div className="detail-elem">
-              <span>ETAT</span> <span>{data.product_details[2]["ÉTAT"]}</span>
+              <div className="elem-id">ETAT</div>{" "}
+              <div>{data.product_details[2]["ÉTAT"]}</div>
             </div>
             <div className="detail-elem">
-              <span>COULEUR</span>{" "}
-              <span>{data.product_details[3]["COULEUR"]}</span>
+              <div className="elem-id">COULEUR</div>
+              <div>{data.product_details[3]["COULEUR"]}</div>
             </div>
             <div className="detail-elem">
-              <span>EMPLACEMENT</span>{" "}
-              <span>{data.product_details[4]["EMPLACEMENT"]}</span>
+              <div className="elem-id">EMPLACEMENT</div>
+              <div>{data.product_details[4]["EMPLACEMENT"]}</div>
             </div>
           </div>
           <div className="separator"></div>
