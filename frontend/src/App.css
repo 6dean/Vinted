@@ -195,6 +195,25 @@ header {
   margin-bottom: 30px;
 }
 
+.user-id-offer {
+  margin-top: 30px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.avatar-profil {
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  margin-right: 10px;
+  object-fit: cover;
+  object-position: center;
+}
+
 .buy-button {
   margin-top: 60px;
 }

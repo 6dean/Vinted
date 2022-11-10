@@ -62,12 +62,12 @@ const Offer = () => {
           <div className="separator"></div>
           <div className="product-name">{data.product_name} </div>
           <div className="product-description">{data.product_description} </div>
-          <div className="user-id">
+          <div className="user-id-offer">
             {data.owner !== undefined &&
             data.owner.account !== undefined &&
             data.owner.account.avatar !== undefined ? (
               <img
-                className="avatar"
+                className="avatar-profil"
                 src={data.owner.account.avatar.secure_url}
                 alt=""
               />
