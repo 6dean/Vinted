@@ -18,7 +18,9 @@ const Header = () => {
         name="Vinted"
       />
       <div className="header-style">
-        <div className="button">S'inscrire | Se connecter</div>
+        <Link to="/Signup">
+          <div className="button">S'inscrire | Se connecter</div>
+        </Link>
         <div className="button-sell">Vendre tes articles</div>
       </div>
     </header>

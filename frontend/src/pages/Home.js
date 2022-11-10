@@ -22,9 +22,15 @@ const Home = () => {
     <span>En cours de chargement... </span>
   ) : (
     <>
+      <div className="box-advertise">
+        <div className="style-advertise">
+          Prêts à faire du tri dans vos placards ?
+        </div>
+        <button className="advertise-button">ACHETER</button>
+      </div>
       <div className="img-advertise">
         <img
-          src="https://static.vinted.com/assets/seller-promotion/gender_test/a/banner-tablets-up-f55440d50886e8cc9b10cbc86322e5b3b48fbfaa6b18ea09215515312e8b1715.jpg"
+          src="https://static.vinted.com/assets/seller-promotion/gender_test/a/banner-wide-7403f719caac875cfeea61593da7fc7e7320c126193b4ff654e4397f54d430ae.jpg"
           alt=""
         />
       </div>
