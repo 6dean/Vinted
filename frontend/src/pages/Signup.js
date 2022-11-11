@@ -10,6 +10,7 @@ const Signup = () => {
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [newsletter, setNewsletter] = useState(false);
   const [infos, setInfos] = useState(false);
 
   // MES VARIABLES
@@ -18,7 +19,7 @@ const Signup = () => {
   return (
     <div className="formulaire">
       <div className="App">
-        <h1>Inscription</h1>
+        <h1>Rejoins-nous !</h1>
         {infos === false ? (
           <div className="input-block">
             <div>
@@ -54,6 +55,16 @@ const Signup = () => {
               />
             </div>
             <div>
+              <input
+                type="checkbox"
+                value={newsletter}
+                onChange={() => {
+                  setNewsletter((current) => !current);
+                }}
+              ></input>
+              <span>Recevoir la newsletter</span>
+            </div>
+            <div>
               <button
                 className="button-join"
                 onClick={() => {
@@ -70,7 +81,7 @@ const Signup = () => {
                             email: email,
                             username: username,
                             password: password,
-                            newsletter: true,
+                            newsletter: newsletter,
                           }
                         );
                         const token = response.data.token;

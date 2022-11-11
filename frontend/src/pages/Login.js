@@ -10,6 +10,9 @@ const Login = ({ transferToken }) => {
 
   // MES VARIABLES
   const navigate = useNavigate();
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   return (
     <div className="formulaire">
@@ -40,6 +43,7 @@ const Login = ({ transferToken }) => {
             </div>
             <div>
               <button
+                className="logging-button"
                 onClick={() => {
                   if (email === "") {
                     alert(`Your informations are not complete`);
@@ -59,7 +63,7 @@ const Login = ({ transferToken }) => {
                         transferToken(token);
                         navigate("/");
                       } catch (error) {
-                        console.log(error);
+                        console.log(error.message);
                       }
                     };
                     data();
@@ -70,7 +74,14 @@ const Login = ({ transferToken }) => {
               </button>
             </div>
           </div>
-        ) : null}
+        ) : (
+          <>
+            <p className="product-description">
+              Vos identifiants sont incorrects, réessayez
+            </p>
+            <button onClick={refreshPage}>Connect again</button>
+          </>
+        )}
       </div>
     </div>
   );
