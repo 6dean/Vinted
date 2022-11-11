@@ -75,9 +75,9 @@ router.get("/offers", async (req, res) => {
     }
     let sKip = 0;
     if (page === "1") {
-      productPage = 5;
+      productPage = 10;
     } else {
-      productPage = 5;
+      productPage = 10;
       sKip = productPage * Number(page) - productPage;
     }
 
