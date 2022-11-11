@@ -97,7 +97,7 @@ router.get("/offers", async (req, res) => {
 
 router.get("/offer/:id", async (req, res) => {
   try {
-    const id = await Offer.findById(req.params.id);
+    const id = await Offer.findById(req.params.id).populate("owner");
     res.status(200).json(id);
   } catch (error) {
     res.status(400).json({ message: error.message });
