@@ -332,6 +332,11 @@ button {
   margin-top: 40px;
 }
 
+input > .checkmark {
+  background-color: aqua;
+  border: 2px solid red;
+}
+
 button:hover {
   cursor: pointer;
 }

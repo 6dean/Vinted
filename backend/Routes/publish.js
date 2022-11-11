@@ -87,7 +87,7 @@ router.get("/offers", async (req, res) => {
       .sort(sortObj)
       .skip(sKip)
       .limit(productPage)
-      .populate("owner", "account");
+      .populate("owner");
 
     res.status(200).json(allOffers);
   } catch (error) {

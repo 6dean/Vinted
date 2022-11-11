@@ -9,10 +9,12 @@ const Offer = () => {
 
   const fetchData = async () => {
     const response = await axios.get(
-      `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+      `https://site--backend-vinted--6qn7tv96v7tt.code.run/offer/${id}`
     );
     setData(response.data);
     setIsLoading(false);
+
+    console.log(response.data);
   };
 
   useEffect(() => {
@@ -41,23 +43,23 @@ const Offer = () => {
           <div className="listing-props">
             <div className="detail-elem">
               <div className="elem-id">MARQUE</div>{" "}
-              <div>{data.product_details[0]["MARQUE"]}</div>
+              <div>{data.product_details[0]["brand"]}</div>
             </div>
             <div className="detail-elem">
               <div className="elem-id">TAILLE</div>{" "}
-              <div>{data.product_details[1]["TAILLE"]}</div>
+              <div>{data.product_details[1]["size"]}</div>
             </div>
             <div className="detail-elem">
               <div className="elem-id">ETAT</div>{" "}
-              <div>{data.product_details[2]["ÉTAT"]}</div>
+              <div>{data.product_details[2]["quality"]}</div>
             </div>
             <div className="detail-elem">
               <div className="elem-id">COULEUR</div>
-              <div>{data.product_details[3]["COULEUR"]}</div>
+              <div>{data.product_details[3]["color"]}</div>
             </div>
             <div className="detail-elem">
               <div className="elem-id">EMPLACEMENT</div>
-              <div>{data.product_details[4]["EMPLACEMENT"]}</div>
+              <div>{data.product_details[4]["city"]}</div>
             </div>
           </div>
           <div className="separator"></div>
@@ -73,7 +75,7 @@ const Offer = () => {
                 alt=""
               />
             ) : null}
-            {data.owner === undefined ? null : data.owner.account.username}
+            {data.owner === undefined ? null : data.owner}
           </div>
           <div className="buy-button">
             <button>ACHETER</button>

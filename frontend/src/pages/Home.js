@@ -8,7 +8,7 @@ const Home = () => {
 
   const fetchData = async () => {
     const response = await axios.get(
-      "https://lereacteur-vinted-api.herokuapp.com/offers"
+      "https://site--backend-vinted--6qn7tv96v7tt.code.run/offers"
     );
     setData(response.data);
     setIsLoading(false);
@@ -36,7 +36,7 @@ const Home = () => {
       </div>
 
       <div className="introduction">
-        {data.offers.map((elem) => {
+        {data.map((elem) => {
           return (
             <div>
               {elem.owner !== undefined ? (

@@ -58,6 +58,7 @@ const Signup = () => {
               <div className="flexbox-letter">
                 <div>
                   <input
+                    className="checkmark"
                     type="checkbox"
                     value={newsletter}
                     onChange={() => {
