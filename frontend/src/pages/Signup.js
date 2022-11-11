@@ -55,14 +55,23 @@ const Signup = () => {
               />
             </div>
             <div>
-              <input
-                type="checkbox"
-                value={newsletter}
-                onChange={() => {
-                  setNewsletter((current) => !current);
-                }}
-              ></input>
-              <span>Recevoir la newsletter</span>
+              <div className="flexbox-letter">
+                <div>
+                  <input
+                    type="checkbox"
+                    value={newsletter}
+                    onChange={() => {
+                      setNewsletter((current) => !current);
+                    }}
+                  ></input>
+                </div>{" "}
+                <div>
+                  <span className="span-letter">
+                    Je souhaite recevoir par e-mail des offres personnalisées et
+                    les dernières mises à jour de Vinted
+                  </span>
+                </div>{" "}
+              </div>
             </div>
             <div>
               <button

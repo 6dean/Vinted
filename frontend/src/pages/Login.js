@@ -79,7 +79,7 @@ const Login = ({ transferToken }) => {
             <p className="product-description">
               Vos identifiants sont incorrects, réessayez
             </p>
-            <button onClick={refreshPage}>Connect again</button>
+            <button onClick={refreshPage}>Retry</button>
           </>
         )}
       </div>
