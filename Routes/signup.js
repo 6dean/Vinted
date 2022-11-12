@@ -55,7 +55,7 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(404).json({ message: error });
+    res.status(406).json({ message: error });
   }
 });
 
