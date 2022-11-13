@@ -18,6 +18,9 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
     const emailExist = await User.findOne({ email: email });
     if (!username) {
       return res.status(400).json({ message: "username needed" });
+    }
+    if (!email) {
+      return res.status(400).json({ message: "username needed" });
     } else if (emailExist !== null) {
       return res.status(400).json({ message: "email already existing" });
     } else {
