@@ -45,11 +45,8 @@ router.get("/offers", async (req, res) => {
       const regExp = new RegExp(req.query.title, "i");
       filters.product_name = regExp;
     }
-    if (Number(priceMin) > Number(priceMax)) {
-      return res.status(406).json("Revois tes cours de math");
-    }
+
     if (priceMin && priceMax) {
-      console.log("OK");
       filters.product_price = {
         $gte: priceMin,
         $lte: priceMax,
