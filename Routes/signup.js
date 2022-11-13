@@ -8,22 +8,15 @@ const cloudinary = require("../Utilities/cloudinary");
 
 const User = require("../Models/User");
 
-const convertToBase64 = (file) => {
-  return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
-};
-
 router.post("/user/signup", fileUpload(), async (req, res) => {
   try {
     const { username, email, password, newsletter } = req.body;
-    const { avatar } = req.files;
     const emailExist = await User.findOne({ email: email });
-    if ((!username, !password, !email)) {
-      return res.status(400).json({
-        message: "username, password and email are mandatory to register",
-      });
+    if (!username) {
+      return res.status(400).json({ message: "username needed" });
     }
-    if (!avatar) {
-      return res.status(406).json({ message: "avatar invalide" });
+    if (!email) {
+      return res.status(400).json({ message: "email needed" });
     } else if (emailExist !== null) {
       return res.status(400).json({ message: "email already existing" });
     } else {
@@ -31,11 +24,15 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
       const hash = SHA256(salt + password).toString(encBase64);
       const token = uid2(16);
 
-      // let upLoad = null;
-      // avatar &&
-      //   (upLoad = await cloudinary.uploader.upload(convertToBase64(avatar), {
-      //     folder: "/Vinted/avatars",
-      //   }));
+      const convertToBase64 = (file) => {
+        return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
+      };
+
+      req.files?.avatar
+        ? await cloudinary.uploader.upload(convertToBase64(req.files.avatar), {
+            folder: "/Vinted/avatars",
+          })
+        : stop;
 
       const newSignup = new User({
         email: email,
