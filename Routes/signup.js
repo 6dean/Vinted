@@ -28,11 +28,11 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
         return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
       };
 
-      req.files?.avatar
+      req.files.avatar
         ? await cloudinary.uploader.upload(convertToBase64(req.files.avatar), {
             folder: "/Vinted/avatars",
           })
-        : stop;
+        : stop(cloudinary);
 
       const newSignup = new User({
         email: email,
