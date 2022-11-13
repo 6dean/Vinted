@@ -54,8 +54,8 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
       const validSignup = {
         id: newSignup._id,
         token: token,
+        email: email,
         account: { username: username },
-        avatar: { secure_url: upLoad.secure_url },
       };
 
       res.status(200).json(validSignup);
