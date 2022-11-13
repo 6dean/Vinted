@@ -28,14 +28,13 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
       const hash = SHA256(salt + password).toString(encBase64);
       const token = uid2(16);
 
-      const raw = req.files.avatar;
-      const IMG = convertToBase64(raw);
+      // const raw = req.files.avatar;
 
-      req.files.avatar
-        ? (upLoad = await cloudinary.uploader.upload(IMG, {
-            folder: "/Vinted/avatars",
-          }))
-        : null;
+      // if (!raw) {fileUpload()}
+      // const IMG = convertToBase64(raw);
+      // const upLoad = await cloudinary.uploader.upload(IMG, {
+      //   folder: "/Vinted/avatars",
+      // });
 
       const newSignup = new User({
         email: email,
