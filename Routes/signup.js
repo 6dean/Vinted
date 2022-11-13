@@ -28,7 +28,9 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
       const hash = SHA256(salt + password).toString(encBase64);
       const token = uid2(16);
 
-      req.files.avatar ? (IMG = convertToBase64(req.files.avatar)) : null;
+      req.files.avatar !== undefined
+        ? (IMG = convertToBase64(req.files.avatar))
+        : undefined;
 
       const newSignup = new User({
         email: email,
@@ -58,7 +60,6 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
       res.status(200).json(validSignup);
     }
   } catch (error) {
-    console.log(error);
     res.status(406).json({ message: error });
   }
 });
