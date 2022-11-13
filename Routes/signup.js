@@ -17,14 +17,15 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
     const { username, email, password, newsletter } = req.body;
     const { avatar } = req.files;
     const emailExist = await User.findOne({ email: email });
-    if (!username) {
-      return res.status(400).json({ message: "username needed" });
+    if ((!username, !password, !email)) {
+      return res
+        .status(400)
+        .json({
+          message: "username, password and email are mandatory to register",
+        });
     }
     if (!avatar) {
       return res.status(406).json({ message: "avatar invalide" });
-    }
-    if (!email) {
-      return res.status(400).json({ message: "email needed" });
     } else if (emailExist !== null) {
       return res.status(400).json({ message: "email already existing" });
     } else {
