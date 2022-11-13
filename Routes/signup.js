@@ -18,11 +18,9 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
     const { avatar } = req.files;
     const emailExist = await User.findOne({ email: email });
     if ((!username, !password, !email)) {
-      return res
-        .status(400)
-        .json({
-          message: "username, password and email are mandatory to register",
-        });
+      return res.status(400).json({
+        message: "username, password and email are mandatory to register",
+      });
     }
     if (!avatar) {
       return res.status(406).json({ message: "avatar invalide" });
@@ -33,11 +31,11 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
       const hash = SHA256(salt + password).toString(encBase64);
       const token = uid2(16);
 
-      let upLoad = null;
-      avatar &&
-        (upLoad = await cloudinary.uploader.upload(convertToBase64(avatar), {
-          folder: "/Vinted/avatars",
-        }));
+      // let upLoad = null;
+      // avatar &&
+      //   (upLoad = await cloudinary.uploader.upload(convertToBase64(avatar), {
+      //     folder: "/Vinted/avatars",
+      //   }));
 
       const newSignup = new User({
         email: email,
