@@ -20,6 +20,9 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
     if (!username) {
       return res.status(400).json({ message: "username needed" });
     }
+    if (!avatar) {
+      return res.status(406).json({ message: "avatar invalide" });
+    }
     if (!email) {
       return res.status(400).json({ message: "email needed" });
     } else if (emailExist !== null) {
