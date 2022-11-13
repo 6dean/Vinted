@@ -12,6 +12,7 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
   try {
     const { username, email, password, newsletter } = req.body;
     const emailExist = await User.findOne({ email: email });
+    const { avatar } = req.files;
     if (!username) {
       return res.status(400).json({ message: "username needed" });
     }
@@ -24,15 +25,15 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
       const hash = SHA256(salt + password).toString(encBase64);
       const token = uid2(16);
 
-      const convertToBase64 = (file) => {
-        return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
-      };
+      if (avatar) {
+        const convertToBase64 = (file) => {
+          return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
+        };
 
-      req.files.avatar
-        ? await cloudinary.uploader.upload(convertToBase64(req.files.avatar), {
-            folder: "/Vinted/avatars",
-          })
-        : stop(cloudinary);
+        await cloudinary.uploader.upload(convertToBase64(avatar), {
+          folder: "/Vinted/avatars",
+        });
+      }
 
       const newSignup = new User({
         email: email,
@@ -43,7 +44,14 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
         token: token,
         hash: hash,
         salt: salt,
-        avatar: { secure_url: upLoad.secure_url },
+        avatar: {
+          secure_url: await cloudinary.uploader.upload(
+            convertToBase64(avatar),
+            {
+              folder: "/Vinted/avatars",
+            }
+          ).secure_url,
+        },
       });
       await newSignup.save();
 
@@ -52,7 +60,14 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
         token: token,
         email: email,
         account: { username: username },
-        avatar: { secure_url: upLoad.secure_url },
+        avatar: {
+          secure_url: await cloudinary.uploader.upload(
+            convertToBase64(avatar),
+            {
+              folder: "/Vinted/avatars",
+            }
+          ).secure_url,
+        },
       };
 
       res.status(200).json(validSignup);
