@@ -30,11 +30,11 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
       const token = uid2(16);
 
       let upLoad = "";
-      avatar
+      avatar !== undefined
         ? (upLoad = await cloudinary.uploader.upload(convertToBase64(avatar), {
             folder: "/Vinted/avatars",
           }))
-        : (upLoad = "none");
+        : (upLoad = "");
 
       const newSignup = new User({
         email: email,
