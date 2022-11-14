@@ -36,6 +36,10 @@ User will be able to delete their Offer.
 <img src="https://servicenav.coservit.com/wp-content/uploads/2022/05/18-1.jpg" alt="MongoDB.icon" width="30"/> **MongoDB**
 - To create my DB online 
 
+<img src="https://cloudinary-res.cloudinary.com/image/upload/website/cloudinary_web_favicon.png" alt="Cloudinary.icon" width="30"/> **Cloudinary**
+
+-To upload picture from User=>Avatar or Offer
+
 
 
 <img src="https://logo.clearbit.com/https://northflank.com/" alt="Northflank.icon" width="30"/> **Northflank**
