@@ -8,10 +8,6 @@ const cloudinary = require("../Utilities/cloudinary");
 
 const User = require("../Models/User");
 
-const convertToBase64 = (file) => {
-  return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
-};
-
 router.post("/user/signup", fileUpload(), async (req, res) => {
   try {
     const { username, email, password, newsletter } = req.body;
@@ -27,12 +23,6 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
       const salt = uid2(16);
       const hash = SHA256(salt + password).toString(encBase64);
       const token = uid2(16);
-
-      const raw = req.files.avatar;
-      const IMG = convertToBase64(raw);
-      const upLoad = await cloudinary.uploader.upload(IMG, {
-        folder: "/Vinted/avatars",
-      });
 
       const newSignup = new User({
         email: email,
