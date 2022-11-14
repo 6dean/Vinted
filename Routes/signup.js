@@ -56,6 +56,8 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
           account: { username: username },
           avatar: { secure_url: upLoad.secure_url },
         };
+
+        res.status(200).json(validSignup);
       } else {
         await newSignup.save();
 
@@ -64,7 +66,7 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
           token: token,
           email: email,
           account: { username: username },
-          avatar: { secure_url: upLoad.secure_url },
+          avatar: {},
         };
 
         res.status(200).json(validSignup);
