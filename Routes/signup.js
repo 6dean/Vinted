@@ -8,6 +8,10 @@ const cloudinary = require("../Utilities/cloudinary");
 
 const User = require("../Models/User");
 
+const convertToBase64 = (file) => {
+  return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
+};
+
 router.post("/user/signup", fileUpload(), async (req, res) => {
   try {
     const { username, email, password, newsletter } = req.body;
