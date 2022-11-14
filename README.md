@@ -43,4 +43,4 @@ User will be able to delete their Offer.
 
 
 <img src="https://logo.clearbit.com/https://northflank.com/" alt="Northflank.icon" width="30"/> **Northflank**
-- To deplay my backend online from Github
+- To deploy my backend online from Github
