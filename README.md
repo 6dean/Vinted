@@ -38,7 +38,7 @@ User will be able to delete their Offer.
 
 <img src="https://cloudinary-res.cloudinary.com/image/upload/website/cloudinary_web_favicon.png" alt="Cloudinary.icon" width="30"/> **Cloudinary**
 
--To upload picture from User=>Avatar or Offer
+- To upload picture from User=>Avatar or Offer
 
 
 
