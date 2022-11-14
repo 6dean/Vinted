@@ -43,8 +43,21 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
         token: token,
         hash: hash,
         salt: salt,
-        avatar: { secure_url: upLoad.secure_url },
       });
+      if (req.files.avatar) {
+        const convertToBase64 = (file) => {
+          return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
+        };
+
+        const raw = req.files.avatar;
+        const IMG = convertToBase64(raw);
+        const upLoad = await cloudinary.uploader.upload(IMG, {
+          folder: "/Vinted/avatars",
+        });
+
+        newSignup.avatar = { secure_url: upLoad.secure_url };
+      }
+
       await newSignup.save();
 
       const validSignup = {
