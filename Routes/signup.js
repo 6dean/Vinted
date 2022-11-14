@@ -24,7 +24,7 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
       const hash = SHA256(salt + password).toString(encBase64);
       const token = uid2(16);
 
-      if (req.files.avatar) {
+      if (req.files.avatar !== null) {
         const convertToBase64 = (file) => {
           return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
         };
