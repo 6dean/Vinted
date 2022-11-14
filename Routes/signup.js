@@ -55,7 +55,7 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
           token: token,
           hash: hash,
           salt: salt,
-          avatar: { secure_url: upLoad.secure_url },
+          avatar: {},
         });
         await newSignup.save();
       }
