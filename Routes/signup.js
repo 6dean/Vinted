@@ -46,19 +46,29 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
         });
 
         newSignup.avatar = { secure_url: upLoad.secure_url };
+
+        await newSignup.save();
+
+        const validSignup = {
+          id: newSignup._id,
+          token: token,
+          email: email,
+          account: { username: username },
+          avatar: { secure_url: upLoad.secure_url },
+        };
+      } else {
+        await newSignup.save();
+
+        const validSignup = {
+          id: newSignup._id,
+          token: token,
+          email: email,
+          account: { username: username },
+          avatar: { secure_url: upLoad.secure_url },
+        };
+
+        res.status(200).json(validSignup);
       }
-
-      await newSignup.save();
-
-      const validSignup = {
-        id: newSignup._id,
-        token: token,
-        email: email,
-        account: { username: username },
-        avatar: { secure_url: upLoad.secure_url },
-      };
-
-      res.status(200).json(validSignup);
     }
   } catch (error) {
     console.log(error);
