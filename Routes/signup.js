@@ -34,7 +34,7 @@ router.post("/user/signup", fileUpload(), async (req, res) => {
         hash: hash,
         salt: salt,
       });
-      if (req.files.avatar) {
+      if (req.files) {
         const convertToBase64 = (file) => {
           return `data:${file.mimetype};base64,${file.data.toString("base64")}`;
         };
