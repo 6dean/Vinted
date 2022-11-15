@@ -18,10 +18,6 @@ app.use(signupRoutes);
 app.use(loginRoutes);
 app.use(publishRoutes);
 
-app.all("*", (req, res) => {
-  res.status(404).json({ message: "This route doesn't exist" });
-});
-
 app.post("/offer/pay", async (req, res) => {
   // Réception du token créer via l'API Stripe depuis le Frontend
   const stripeToken = req.body.stripeToken;
@@ -37,6 +33,10 @@ app.post("/offer/pay", async (req, res) => {
   console.log(response.status);
 
   res.json(response);
+});
+
+app.all("*", (req, res) => {
+  res.status(404).json({ message: "This route doesn't exist" });
 });
 
 app.listen(process.env.PORT, () => {
