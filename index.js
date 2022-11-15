@@ -25,7 +25,6 @@ app.post("/offer/pay", async (req, res) => {
   const { id, price, description } = req.body;
   // Créer la transaction
   const response = await stripe.charges.create({
-    id: id,
     amount: price * 100,
     currency: "eur",
     description: description,
