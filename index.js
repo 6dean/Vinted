@@ -31,7 +31,8 @@ app.post("/offer/pay", async (req, res) => {
     source: stripeToken,
   });
   console.log(response.status);
-
+  Offer.findById(id).deleteone();
+  !id && console.log("offer deleted");
   res.json(response);
 });
 
