@@ -20,6 +20,7 @@ app.use(loginRoutes);
 app.use(publishRoutes);
 
 app.post("/offer/pay", async (req, res) => {
+  const Offer = require("../Vinted BACK/Models/Offer");
   const stripeToken = req.body.stripeToken;
   const { id, price, description } = req.body;
   // Créer la transaction
@@ -31,9 +32,8 @@ app.post("/offer/pay", async (req, res) => {
     source: stripeToken,
   });
   console.log(response.status);
-  const Offer = require("../Vinted BACK/Models/Offer");
-  Offer.findById(id).deleteone();
-  !id && console.log("offer deleted");
+  const newDetele = await Offer.findById(id).deleteOne(id);
+  console.log(newDetele, "is deleted");
   res.json(response);
 });
 
