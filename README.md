@@ -1,7 +1,9 @@
-# Vinted
+# Vinted Backend
 
-It is the backend of my Vinted replica made with Node.js
+It is the backend of my Vinted replica made with Node.js from my first FullStack Project.
+
 Vinted is e-commerce website and mobile. In my case, it's only the **Desktop version**.
+
 I have created models for User and Offer.
 
 User => Username, Email, Password, Avatar (optionnal)
