@@ -20,7 +20,7 @@ app.use(loginRoutes);
 app.use(publishRoutes);
 
 app.post("/offer/pay", async (req, res) => {
-  const Offer = require("../Vinted BACK/Models/Offer");
+  const Offer = require("./Models/Offer");
   const stripeToken = req.body.stripeToken;
   const { id, price, description } = req.body;
   // Créer la transaction
