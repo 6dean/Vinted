@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express"); // package express
 const cors = require("cors"); // package cors
 const mongoose = require("mongoose"); // package mongoose
@@ -7,7 +9,6 @@ const app = express(); // constante app utilisant express
 app.use(cors());
 app.use(express.json()); // utilisation format JSON
 
-require("dotenv").config();
 mongoose.connect(process.env.MONGODB_URI); // DB Vinted
 
 const signupRoutes = require("./Routes/signup"); // raccourci signup
@@ -19,17 +20,14 @@ app.use(loginRoutes);
 app.use(publishRoutes);
 
 app.post("/offer/pay", async (req, res) => {
-  // Réception du token créer via l'API Stripe depuis le Frontend
   const stripeToken = req.body.stripeToken;
-  const { title, price, description } = req.body;
-  console.log(stripeToken);
+  const { id, price, description } = req.body;
   // Créer la transaction
   const response = await stripe.charges.create({
-    name: title,
-    amount: price,
+    id: id,
+    amount: price * 100,
     currency: "eur",
     description: description,
-    // On envoie ici le token
     source: stripeToken,
   });
   console.log(response.status);
