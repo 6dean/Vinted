@@ -24,9 +24,11 @@ app.post("/offer/pay", async (req, res) => {
   console.log(stripeToken);
   // Créer la transaction
   const response = await stripe.charges.create({
-    amount: 2000,
+    name: title,
+    amount: price,
     currency: "eur",
-    description: "La description de l'objet acheté",
+    description: description,
+    id: id,
     // On envoie ici le token
     source: stripeToken,
   });
