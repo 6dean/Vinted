@@ -32,7 +32,7 @@ app.post("/offer/pay", async (req, res) => {
     source: stripeToken,
   });
   console.log(response.status);
-  const newDetele = await Offer.findById(id).deleteOne({ id: id });
+  const newDetele = await Offer.findByIdAndDelete(id);
   console.log(newDetele, "is deleted");
   res.json(response);
 });
