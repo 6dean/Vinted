@@ -21,6 +21,7 @@ app.use(publishRoutes);
 app.post("/offer/pay", async (req, res) => {
   // Réception du token créer via l'API Stripe depuis le Frontend
   const stripeToken = req.body.stripeToken;
+  const { title, price, description, id } = req.body;
   console.log(stripeToken);
   // Créer la transaction
   const response = await stripe.charges.create({
