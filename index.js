@@ -31,6 +31,7 @@ app.post("/offer/pay", async (req, res) => {
     source: stripeToken,
   });
   console.log(response.status);
+  const Offer = require("../Vinted BACK/Models/Offer");
   Offer.findById(id).deleteone();
   !id && console.log("offer deleted");
   res.json(response);
